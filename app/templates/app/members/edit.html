@@ -1,0 +1,22 @@
+{% extends "app/base.html" %}
+
+{% block title %}Modification des membres{% endblock title %}
+
+{% block content %}
+    {% if id %}
+    <h3 class="page-header">Modification des membres</h3>
+    <form action="{% url 'app:edit' id=id %}" method="post" class="form-horizontal" role="form">
+    {% else %}
+    <h3 class="page-header">Inscription des membres</h3>
+    <form action="{% url 'app:add' %}" method="post" class="form-horizontal" role="form">
+    {% endif %}
+      {% csrf_token %}
+      {{ form }}
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+      </div>
+    </form>
+    <a href="{% url 'app:index' %}" class="btn btn-default btn-sm">Revenir</a>
+{% endblock content %}

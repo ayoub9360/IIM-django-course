@@ -1,0 +1,52 @@
+{% extends "app/base.html" %}
+
+{% block title %}
+Programmé pour afficher une liste
+{% endblock title %}
+
+{% block content %}
+<h3>Affichage de la liste</h3>
+
+<a href="{% url 'app:add' %}" class="btn btn-primary btn-sm">ajouter à</a>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom complet</th>
+            <th>E-Mail</th>
+            <th>âge</th>
+            <th>opération</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in members %}
+        <tr>
+            <td>{{ member.id }}</td>
+            <td><a href="{% url 'app:detail' id=member.id %}">{{ member.name }}</a></td>
+            <td>{{ member.email }}</td>
+            <td>{{ member.age }}</td>
+            <td>
+                <a href="{% url 'app:edit' id=member.id %}" class="btn btn-primary btn-sm">Éditer</a>
+                <a href="{% url 'app:delete' id=member.id %}" class="btn btn-primary btn-sm" id="btn_del">Effacer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<!--Mettez la page ici-->
+{% block script %}
+<script>
+    $(function(){
+        $("#btn_del").click(function(){
+            if(confirm("Voulez-vous le supprimer?")){
+                //Traitement oui (continuez sans rien faire)
+            }else{
+                //Annuler le traitement
+                return false;
+            }
+        });
+    })
+</script>
+{% endblock %}
+{% endblock content %}
