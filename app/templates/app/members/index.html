@@ -37,6 +37,15 @@ Programmé pour afficher une liste
         {% endfor %}
     </tbody>
 </table>
+<form action="{% url 'app:index' %}" method="post" class="form-horizontal" role="form">
+    {% csrf_token %}
+    {{ form }}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </div>
+</form>
+
 <!--Mettez la page ici-->
 {% block script %}
 <script>
