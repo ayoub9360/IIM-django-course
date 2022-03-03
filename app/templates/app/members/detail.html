@@ -4,11 +4,15 @@
 {% block content %}
     <h3>Informations détaillées des membres</h3>
     <h5>Nom</h5>
-    {{ member.name }}
-    <h5>E-Mail</h5>
-    {{ member.email }}
-    <h5>âge</h5>
-    {{ member.age }}
+    {{ product.name }}
+    <h5>Description</h5>
+    {{ product.description }}
+    <h5>Price</h5>
+    {{ product.price }}
+    <h5>Stock</h5>
+    {{ product.stock }}
+    <h5>Image</h5>
+    <img src="{{ product.imageUrl }}" alt="Image">
     <br>
     <br>
     <a href="{% url 'app:index' %}" class="btn btn-default btn-sm">Revenir</a>
