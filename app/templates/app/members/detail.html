@@ -16,4 +16,14 @@
     <br>
     <br>
     <a href="{% url 'app:index' %}" class="btn btn-default btn-sm">Revenir</a>
+
+    <form action="{% url 'app:detail' id=product.id %}" method="post" class="form-horizontal" role="form">
+        {% csrf_token %}
+        {{ form }}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+            </div>
+        </div>
+        </form>
 {% endblock content %}

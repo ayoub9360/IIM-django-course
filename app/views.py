@@ -46,5 +46,14 @@ def edit(request, id=None):
 
 #Détails
 def detail(request, id=id):
-  product = get_object_or_404(Product, pk=id)
-  return render(request, 'app/members/detail.html', {'product':product})
+	product = get_object_or_404(Product, pk=id)
+
+	if request.method == 'POST':
+		#Générer un formulaire
+		form = UpdateProductForm(request.POST, instance=product)
+		if form.is_valid(): #Enregistrer si la validation est OK
+			product = form.save(commit=False)
+			product.save()
+			return redirect('app:index')
+	form = UpdateProductForm(instance=product)
+	return render(request, 'app/members/detail.html', {'product':product, 'form': form})

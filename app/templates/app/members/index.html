@@ -28,10 +28,6 @@ Programmé pour afficher une liste
                     <td>{{ product.description }}</td>
                     <td>{{ product.price }}</td>
                     <td>{{ product.stock }}</td>
-                    <td>
-                        <a href="{% url 'app:edit' id=product.id %}" class="btn btn-primary btn-sm">Éditer</a>
-                        <!-- <a href=" url 'app:delete' id=member.id %}" class="btn btn-primary btn-sm" id="btn_del">Effacer</a> -->
-                    </td>
                 </tr>
             {% endif %}
         {% endfor %}
