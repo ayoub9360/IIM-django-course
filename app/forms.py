@@ -1,8 +1,8 @@
 from django.forms import ModelForm
-from .models import Member
+from .models import Product
 
 
-class MemberForm(ModelForm):
+class ProductForm(ModelForm):
 	class Meta:
-		model = Member
-		fields = ('name','email','age',)
+		model = Product
+		fields = ('stock',)
