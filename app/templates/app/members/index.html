@@ -7,39 +7,44 @@ Programmé pour afficher une liste
 {% block content %}
 <h3>Affichage de la liste</h3>
 
-<!-- <a href=" url 'app:add' %}" class="btn btn-primary btn-sm">ajouter à</a> -->
+<div class="container" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 32px; margin-top: 32px;">
+    {% for product in products %}
+        {% if product.stock > 0 %}
+            <div class="card" style="width: 18rem; margin-bottom: 32px;">
+                <img class="card-img-top" src="{{ product.imageUrl }}" alt="Card image cap" style="padding: 12px;">
+                <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description|slice:80 }}...</p>
+                <a href="{% url 'app:detail' id=product.id %}" class="btn btn-primary">Buy now</a>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
 
-<table class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nom complet</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Stock</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for product in products %}
-            {% if product.stock > 0 %}
-                <tr>
-                    <td>{{ product.id }}</td>
-                    <td><a href="{% url 'app:detail' id=product.id %}">{{ product.name }}</a></td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.stock }}</td>
-                </tr>
-            {% endif %}
-        {% endfor %}
-    </tbody>
-</table>
-<form action="{% url 'app:index' %}" method="post" class="form-horizontal" role="form">
+<form action="{% url 'app:index' %}" method="post" role="form">
     {% csrf_token %}
-    {{ form }}
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <label for="id_name">Name</label>
+        <input type="text" class="form-control" name="name" id="id_name" placeholder="Enter a name">
     </div>
+    <div class="form-group">
+        <label for="id_description">Description</label>
+        <textarea class="form-control" id="id_description" name="description" placeholder="Description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="id_imageUrl">Image Url</label>
+        <textarea class="form-control" name="imageUrl" id="id_imageUrl" placeholder="Image Url"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="id_price">Price</label>
+        <input type="number" class="form-control" name="price" id="id_price" placeholder="Price">
+    </div>
+    <div class="form-group">
+        <label for="id_stock">Stock</label>
+        <input type="number" class="form-control" name="stock" id="id_stock" placeholder="Stock">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 <!--Mettez la page ici-->
