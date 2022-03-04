@@ -8,4 +8,5 @@ urlpatterns = [
     path('members/edit/<int:id>/', views.edit, name='edit'),
     # path('members/delete/<int:id>/', views.delete, name='delete'),
     path('members/detail/<int:id>/', views.detail, name='detail'),
+    path('chat/', views.lobby, name='chat'),
 ]

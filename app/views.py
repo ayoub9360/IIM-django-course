@@ -57,3 +57,7 @@ def detail(request, id=id):
 			return redirect('app:index')
 	form = UpdateProductForm(instance=product)
 	return render(request, 'app/members/detail.html', {'product':product, 'form': form})
+
+
+def lobby(request):
+    return render(request, 'app/chat/lobby.html')
