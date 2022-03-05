@@ -5,12 +5,14 @@ Project using Django
 
 ## Features
 
-- E-commerce Website
-- Live Chat
-- Quantity Stock
+- E-commerce Website ✅
+- Live Chat ✅
+- Quantity Stock ✅
 
 ## How start the project ? 
 
 - Clone the project
-- Lunch server with : python manage.py runserver
-- Migration : python manage.py makemigrations
+- Migration :
+    - python manage.py makemigrations
+    - python manage.py migrate
+- Launch server with : python manage.py runserver
